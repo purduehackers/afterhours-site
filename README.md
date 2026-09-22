@@ -19,8 +19,9 @@ The incorporation date, business ID, president, and EIN were checked against the
 record and IRS EIN notice dated September 21, 2026. Contact information and the educational purpose
 come from the INBiz incorporation review. The source PDFs are not published with the site.
 
-The page does not assert federal tax-exempt status or tax deductibility. Add those details, board
-members, and public annual filings when they are confirmed and available.
+The board listing was supplied by the foundation. The page does not assert federal tax-exempt
+status or tax deductibility. Add those details and public annual filings when they are confirmed
+and available.
 
 Describe the foundation's own mission and activities. Claims about operating or funding another
 organization's programs, formal affiliations, or university endorsement must reflect documented
