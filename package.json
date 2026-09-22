@@ -1,0 +1,26 @@
+{
+  "name": "afterhours-foundation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun scripts/dev.ts",
+    "format": "oxfmt",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "@vercel/config": "^0.7.0",
+    "better-result": "^3"
+  },
+  "devDependencies": {
+    "@rayhanadev/ox": "0.4.0",
+    "@types/bun": "^1.4.2",
+    "oxclippy": "^0.2.0",
+    "oxfmt": "^0.67.0",
+    "oxlint": "^1.82.0",
+    "oxlint-tsgolint": "^7.0.2001"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "packageManager": "bun@1.4.0"
+}
