@@ -1,7 +1,7 @@
 # The Afterhours Foundation
 
-A minimal, static website for The Afterhours Foundation, Inc., an Indiana nonprofit backing
-[Purdue Hackers](https://www.purduehackers.com/).
+A minimal, static website for The Afterhours Foundation, Inc., an Indiana nonprofit supporting
+hacker activity and learning through creative and technical projects.
 
 Live at [the.afterhours.foundation](https://the.afterhours.foundation/).
 
@@ -21,6 +21,11 @@ come from the INBiz incorporation review. The source PDFs are not published with
 
 The page does not assert federal tax-exempt status or tax deductibility. Add those details, board
 members, and public annual filings when they are confirmed and available.
+
+Describe the foundation's own mission and activities. Claims about operating or funding another
+organization's programs, formal affiliations, or university endorsement must reflect documented
+arrangements. The current copy does not establish such arrangements or determine which university
+rules apply to an activity.
 
 Deploy to the `afterhours-foundation` project on the `purdue-hackers` Vercel team:
 
