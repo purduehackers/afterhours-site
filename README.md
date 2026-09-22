@@ -1,7 +1,7 @@
 # The Afterhours Foundation
 
-A minimal, static website for The Afterhours Foundation, Inc., an Indiana nonprofit supporting
-hacker activity and learning through creative and technical projects.
+A minimal, static website for The Afterhours Foundation, Inc., an Indiana nonprofit backing hacker
+activity and helping curious people make cool things with software, hardware, and art.
 
 Live at [the.afterhours.foundation](https://the.afterhours.foundation/).
 
