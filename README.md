@@ -24,15 +24,14 @@ status or tax deductibility. Add those details and public annual filings when th
 and available.
 
 Describe the foundation's own mission and activities. Claims about operating or funding another
-organization's programs, formal affiliations, or university endorsement must reflect documented
-arrangements. The current copy does not establish such arrangements or determine which university
-rules apply to an activity.
+organization's programs or formal affiliations must reflect documented arrangements. The current
+copy does not establish such arrangements.
 
-Deploy to the `afterhours-foundation` project on the `purdue-hackers` Vercel team:
+Deploy to the `afterhours-foundation` Vercel project:
 
 ```sh
-vercel link --project afterhours-foundation --scope purdue-hackers
-vercel --prod --scope purdue-hackers
+vercel link --project afterhours-foundation
+vercel --prod
 ```
 
 Vercel serves `public` directly. The primary domain is `the.afterhours.foundation`;
