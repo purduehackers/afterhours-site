@@ -81,7 +81,9 @@ describe("contribution amount and identity boundaries", () => {
       ).idempotencyKey,
     ).not.toBe(first.idempotencyKey);
   });
+});
 
+describe("request origin boundaries", () => {
   test("rejects cross-origin writes before contacting Stripe", async () => {
     const response = await Result.tryPromise(() =>
       contributions.fetch(
