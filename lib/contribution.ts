@@ -4,20 +4,17 @@ import { Result } from "better-result";
 import Stripe from "stripe";
 import type { z } from "zod";
 
-import { quoteContribution } from "../public/contribution-amounts.js";
+import { quoteContribution } from "./contribution-amounts.ts";
 import type { contributionSchema } from "./contribution.schema.ts";
 
 /** Use configured deployment origins rather than a client-supplied redirect URL. */
 export function contributionOrigin(requestOrigin?: string | null) {
-  const configured =
-    process.env.APP_ORIGIN ||
-    (process.env.VERCEL_ENV === "production"
-      ? "https://the.afterhours.foundation"
-      : process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://127.0.0.1:3000");
+  let configured = process.env.APP_ORIGIN;
+  if (!configured && process.env.VERCEL_ENV === "production")
+    configured = "https://the.afterhours.foundation";
+  if (!configured && process.env.VERCEL_URL) configured = `https://${process.env.VERCEL_URL}`;
   return Result.try(() => {
-    const origin = new URL(configured).origin;
+    const origin = new URL(configured || "http://127.0.0.1:3000").origin;
     const branchOrigin = process.env.VERCEL_BRANCH_URL
       ? new URL(`https://${process.env.VERCEL_BRANCH_URL}`).origin
       : origin;
@@ -45,32 +42,20 @@ export function contributionCheckout(data: z.output<typeof contributionSchema>, 
     contribution_cents: String(quote.amountCents),
     processing_support_cents: String(quote.supportCents),
   };
-  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
-    {
-      price_data: {
-        currency: "usd",
-        product_data: { name: "Contribution to The Afterhours Foundation" },
-        unit_amount: quote.amountCents,
-      },
-      quantity: 1,
-    },
-  ];
-  if (quote.supportCents > 0) {
-    lineItems.push({
-      price_data: {
-        currency: "usd",
-        product_data: { name: "Optional contribution toward processing costs" },
-        unit_amount: quote.supportCents,
-      },
-      quantity: 1,
-    });
-  }
   const parameters: Stripe.Checkout.SessionCreateParams = {
     mode: "payment",
     integration_identifier: "afterhours_contributions_mzqvtxka",
     submit_type: "donate",
     customer_email: data.email,
-    line_items: lineItems,
+    line_items: [
+      { name: "Contribution to The Afterhours Foundation", amount: quote.amountCents },
+      { name: "Optional contribution toward processing costs", amount: quote.supportCents },
+    ]
+      .filter(({ amount }) => amount > 0)
+      .map(({ name, amount }) => ({
+        price_data: { currency: "usd", product_data: { name }, unit_amount: amount },
+        quantity: 1,
+      })),
     metadata,
     payment_intent_data: { metadata },
     success_url: `${origin}/contribute.html?session_id={CHECKOUT_SESSION_ID}`,

@@ -11,6 +11,7 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <title>Give to The Afterhours Foundation</title>
+    <link rel="stylesheet" href="/site.css" />
     <link rel="stylesheet" href="/contribute.css" />
     <script type="module" src="/contribute.js"></script>
   </head>
@@ -24,14 +25,14 @@
         </p>
       </header>
 
-      <section class="donation" aria-label="Make a contribution">
+      <section aria-label="Make a contribution">
         <h2>MAKE A CONTRIBUTION</h2>
         <p>One-time contributions in USD. You'll enter your payment details on Stripe.</p>
         <p id="sandbox-notice" class="notice" hidden>
           Sandbox preview. Use test payment details. No real money will move.
         </p>
         <div id="form-notice" class="notice" role="status" hidden></div>
-        <div id="confirmation" class="confirmation" tabindex="-1" hidden>
+        <div id="confirmation" tabindex="-1" hidden>
           <h2 id="confirmation-title">Checking your contribution…</h2>
           <p id="confirmation-message">We’re confirming the payment status with Stripe.</p>
           <a href="/contribute.html">Back to the contribution form</a>
