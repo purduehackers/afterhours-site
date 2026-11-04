@@ -1,0 +1,32 @@
+body {
+  max-width: 72ch;
+  margin: 40px auto;
+  padding: 0 20px;
+  font:
+    14px/1.6 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+  color: #fff;
+  background: #000;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h2 {
+  margin-top: 2em;
+  font-size: 1em;
+}
+
+a {
+  color: inherit;
+}
+
+hr {
+  margin-top: 2em;
+  border: 0;
+  border-top: 1px solid;
+}

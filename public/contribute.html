@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Support technology and creative learning with a one-time contribution to The Afterhours Foundation."
+    />
+    <meta name="referrer" content="same-origin" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#000000" />
+    <title>Give to The Afterhours Foundation</title>
+    <link rel="stylesheet" href="/site.css" />
+    <link rel="stylesheet" href="/contribute.css" />
+    <script type="module" src="/contribute.js"></script>
+  </head>
+  <body>
+    <p id="sandbox-notice" class="sandbox-trim" role="status" hidden>
+      <strong>Sandbox</strong>
+    </p>
+    <main>
+      <header>
+        <h1><a class="foundation-name" href="/">THE AFTERHOURS FOUNDATION</a></h1>
+        <p>
+          Backing hacker activity and helping curious people make cool things with software,
+          hardware, and art.
+        </p>
+      </header>
+
+      <section aria-label="Make a contribution">
+        <h2>MAKE A CONTRIBUTION</h2>
+        <p>One-time contributions in USD. You'll enter your payment details on Stripe.</p>
+        <div id="form-notice" class="notice" role="status" hidden></div>
+        <div id="confirmation" tabindex="-1" hidden>
+          <h2 id="confirmation-title">Checking your contribution…</h2>
+          <p id="confirmation-message">We’re confirming the payment status with Stripe.</p>
+          <a href="/contribute.html">Back to the contribution form</a>
+        </div>
+        <form id="contribution-form" action="/api/contributions" method="post">
+          <div class="field">
+            <label for="donor-name">Your name</label>
+            <input
+              id="donor-name"
+              name="name"
+              type="text"
+              placeholder="John Smith"
+              autocomplete="name"
+              maxlength="120"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="donor-email">Your email</label>
+            <p class="hint" id="email-hint">
+              Afterhours will send a confirmation here, and may use it to communicate with you.
+            </p>
+            <input
+              id="donor-email"
+              name="email"
+              type="email"
+              placeholder="jsmith@gmail.com"
+              autocomplete="email"
+              maxlength="254"
+              aria-describedby="email-hint"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="donor-message">Message</label>
+            <p class="hint" id="message-hint">Optionally include a note.</p>
+            <textarea
+              id="donor-message"
+              name="message"
+              placeholder="Keep up the good work!"
+              aria-describedby="message-hint"
+              rows="2"
+              maxlength="500"
+            ></textarea>
+          </div>
+          <div class="field">
+            <label for="donation-amount">Donation amount</label>
+            <div class="amount">
+              <span aria-hidden="true">$</span
+              ><input
+                id="donation-amount"
+                name="amount"
+                type="number"
+                inputmode="decimal"
+                placeholder="30.00"
+                step="0.01"
+                min="1"
+                max="999999.99"
+                required
+              />
+            </div>
+          </div>
+          <label class="checkbox" for="goods"
+            ><input id="goods" name="goods" type="checkbox" value="yes" /><span
+              >I’m receiving goods for this donation.</span
+            ></label
+          >
+          <label class="checkbox" for="cover-processing"
+            ><input id="cover-processing" name="coverProcessing" type="checkbox" value="yes" /><span
+              id="processing-label"
+              >Add $0.00 to help with processing costs</span
+            ></label
+          >
+          <p class="hint fee-note">Optional estimate for US cards. Actual fees may vary.</p>
+          <p class="total" aria-live="polite" hidden>
+            Total donation: <strong id="total-amount">—</strong>
+          </p>
+          <input id="attempt" type="hidden" name="attempt" />
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Leave this blank</label
+            ><input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <button id="continue-button" type="submit" disabled>
+            Continue <span aria-hidden="true">→</span>
+          </button>
+          <p class="secure-note">Secure payment with Stripe on the next page.</p>
+          <noscript
+            ><p>
+              Please enable JavaScript to use this form, or
+              <a href="mailto:ray@afterhours.foundation">contact us</a> to contribute.
+            </p></noscript
+          >
+        </form>
+      </section>
+    </main>
+    <hr />
+    <footer>
+      <p>
+        The Afterhours Foundation, Inc. is an Indiana nonprofit. Our registered EIN is 42-5215723.
+      </p>
+      <p>
+        Questions? Get in touch at
+        <a href="mailto:ray@afterhours.foundation">ray@afterhours.foundation</a>
+      </p>
+    </footer>
+  </body>
+</html>
