@@ -48,10 +48,11 @@ async function initialize() {
     const valid = Number.isSafeInteger(cents) && cents >= 100;
     const quote = quoteContribution(valid ? cents : 0, cover.checked);
     total.textContent = valid ? formatUsd(quote.totalCents) : "—";
+    if (total.parentElement) total.parentElement.hidden = !valid || !cover.checked;
     const extra = quoteContribution(valid ? cents : 0, true).supportCents;
     processingLabel.textContent = valid
-      ? `Add ${formatUsd(extra)} to help with processing costs.`
-      : "Add a little extra to help with processing costs.";
+      ? `Add ${formatUsd(extra)} to help with processing costs`
+      : "Add $0.00 to help with processing costs";
   };
   const stored = Result.try(() => sessionStorage.getItem(storageKey));
   if (stored.isOk() && stored.value) {
@@ -80,7 +81,7 @@ async function initialize() {
   });
   window.addEventListener("pageshow", () => {
     button.disabled = button.dataset.ready !== "yes";
-    button.textContent = "Continue to payment →";
+    button.textContent = "Continue →";
   });
   updateQuote();
   if (query.has("error"))
