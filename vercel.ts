@@ -1,6 +1,7 @@
 import type { VercelConfig } from "@vercel/config/v1";
 
 export const config = {
+  bunVersion: "1.4.x",
   framework: null,
   installCommand: "bun install --frozen-lockfile",
   buildCommand: "bun run build",
