@@ -5,6 +5,19 @@
 [hidden] {
   display: none !important;
 }
+.sandbox-trim {
+  position: absolute;
+  inset: 0 0 auto;
+  margin: 0;
+  padding: 4px 20px;
+  background: #facc15;
+  color: #000;
+  font-size: 12px;
+  text-align: center;
+}
+.sandbox-trim:not([hidden]) + main {
+  padding-top: 16px;
+}
 .foundation-name {
   text-decoration: none;
 }
