@@ -1,247 +1,141 @@
 :root {
-  color-scheme: light dark;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  color-scheme: dark;
   font-synthesis: none;
-  -webkit-font-smoothing: antialiased;
-  --background: #f9fafc;
-  --card: #fff;
-  --text: #1f2d3d;
-  --muted: #68788d;
-  --border: #e0e6ed;
-  --input-background: transparent;
-  --input-border: #c7c7c74d;
-  --placeholder: #8492a6;
-  --button: #33d6a6;
-  --button-text: #0a3327;
-  --button-hover: #28c798;
-  color: var(--text);
-  background: var(--background);
-}
-* {
-  box-sizing: border-box;
 }
 [hidden] {
   display: none !important;
 }
 body {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-header {
-  padding: 80px 24px 88px;
-  text-align: center;
-}
-.eyebrow {
-  margin: 0;
-  color: var(--muted);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  max-width: 72ch;
+  margin: 40px auto;
+  padding: 0 20px;
+  font:
+    14px/1.6 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+  color: #fff;
+  background: #000;
 }
 h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 72px;
-  margin: 8px 0 0;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-size: 1.2em;
+}
+h2 {
+  margin-top: 2em;
+  font-size: 1em;
+}
+a {
+  color: inherit;
 }
 .foundation-name {
-  color: inherit;
   text-decoration: none;
 }
-.donation {
-  width: min(384px, calc(100% - 40px));
-  margin: 36px auto 0;
+hr {
+  margin-top: 2em;
+  border: 0;
+  border-top: 1px solid;
 }
-.contribution-type {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-  gap: 12px;
-}
-.selected-type {
-  position: relative;
-  padding: 8px 2px 12px;
-  color: #ec3750;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.selected-type::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 2px;
-  background: currentColor;
-  border-radius: 1px 1px 0 0;
-}
-.sandbox {
-  color: var(--muted);
-  font-size: 11px;
-  text-align: right;
-}
-.card {
-  background: var(--card);
-  border-radius: 8px;
-  box-shadow:
-    0 0 0 0.5px var(--border),
-    0 1px 4px #00000008;
-  padding: 16px;
+form {
+  margin-top: 1.5em;
 }
 .field {
-  margin-bottom: 16px;
+  margin-bottom: 1.5em;
 }
 label {
   display: block;
-  font-size: 16px;
-  font-weight: 400;
 }
 input:not([type="checkbox"]):not([type="hidden"]),
 textarea {
-  appearance: none;
+  box-sizing: border-box;
   display: block;
   width: 100%;
   min-width: 0;
-  min-height: 36px;
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  background: var(--input-background);
-  color: var(--text);
-  padding: 4px 8px;
+  min-height: 42px;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #777;
+  border-radius: 0;
+  background: #000;
+  color: #fff;
   font: inherit;
-  line-height: 26px;
-  outline: none;
 }
 input::placeholder,
 textarea::placeholder {
-  color: var(--placeholder);
+  color: #999;
   opacity: 1;
 }
-input:not([type="checkbox"]):focus,
-textarea:focus {
-  border-color: #338eda;
-  box-shadow: 0 0 0 3px #338eda40;
+textarea {
+  min-height: 80px;
+  resize: vertical;
 }
+input:focus-visible,
+textarea:focus-visible,
 button:focus-visible,
-a:focus-visible,
-input[type="checkbox"]:focus-visible {
-  outline: 2px solid #338eda;
+a:focus-visible {
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
-textarea {
-  resize: vertical;
-  min-height: 58px;
-  line-height: 24px;
-}
-.hint {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 21px;
-  margin: 0;
+.hint,
+.secure-note {
+  margin: 4px 0;
+  color: #aaa;
+  font-size: 0.9em;
 }
 .amount {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .amount > span {
-  width: 16px;
   flex-shrink: 0;
-  color: var(--muted);
-  font-weight: 700;
 }
-.amount input {
+.amount input,
+.total {
   font-variant-numeric: tabular-nums;
 }
 .checkbox {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  line-height: 24px;
-  padding: 4px 0;
+  margin: 12px 0;
+  cursor: pointer;
 }
 .checkbox input {
-  margin: 6px 2px 0 0;
-  width: 13px;
-  height: 13px;
-  flex: 0 0 13px;
-  accent-color: #338eda;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  accent-color: #fff;
 }
 .fee-note {
-  font-size: 12px;
-  line-height: 18px;
-  margin: 2px 0 12px 23px;
+  margin-left: 24px;
 }
 .total {
-  margin: 12px 0;
-  font-size: 14px;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
+  margin: 1.5em 0;
 }
 button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  width: 100%;
-  min-height: 36px;
-  padding: 4px 16px;
-  border: 0;
-  border-radius: 4px;
-  background: var(--button);
-  color: var(--button-text);
-  box-shadow: inset 0 0 0 0.5px #0000001a;
+  min-height: 44px;
+  margin: 1.5em 0 8px;
+  padding: 8px 14px;
+  border: 1px solid #fff;
+  border-radius: 0;
+  background: #fff;
+  color: #000;
   font: inherit;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
 }
 button:hover {
-  background: var(--button-hover);
+  background: #ddd;
 }
 button:disabled {
   opacity: 0.5;
   cursor: wait;
 }
-.secure-note {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 18px;
-  text-align: center;
-  margin: 8px 0 0;
-}
 .notice {
-  padding: 12px;
-  margin-bottom: 16px;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 14px;
-}
-.confirmation h2 {
-  font-size: 24px;
-  line-height: 1.25;
-}
-.confirmation .eyebrow {
-  font-size: 12px;
-}
-.confirmation p {
-  color: var(--muted);
-}
-.confirmation a,
-footer a,
-noscript a {
-  color: inherit;
+  padding-left: 12px;
+  border-left: 1px solid #fff;
 }
 .honeypot {
   position: absolute;
@@ -250,51 +144,12 @@ noscript a {
   height: 1px;
   overflow: hidden;
 }
-footer {
-  width: min(384px, calc(100% - 40px));
-  margin: 48px auto 16px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 14px;
-  line-height: 21px;
-  text-wrap: pretty;
-}
 footer p {
-  margin: 0 0 8px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #17171d;
-    --card: #252429;
-    --text: #e0e6ed;
-    --muted: #9299a5;
-    --border: #45434b;
-    --input-background: #17171d;
-    --input-border: #ffffff0d;
-    --placeholder: #9299a5;
-    --button: #123e62;
-    --button-text: #e0eef9;
-    --button-hover: #1a598d;
-  }
+  overflow-wrap: anywhere;
 }
 @media (max-width: 480px) {
-  header {
-    padding: 48px 24px 48px;
-  }
-  h1 {
-    font-size: 28px;
-    min-height: 70px;
-    max-width: 340px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .eyebrow {
-    font-size: 18px;
-  }
-  .donation {
-    margin-top: 24px;
-  }
-  footer {
-    margin-top: 32px;
+  input:not([type="checkbox"]):not([type="hidden"]),
+  textarea {
+    font-size: 16px;
   }
 }
