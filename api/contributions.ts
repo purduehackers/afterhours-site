@@ -10,7 +10,7 @@ import {
 export default {
   /** Create hosted checkout after validating the first-step form, or report configuration readiness. */
   async fetch(request: Request) {
-    const originResult = contributionOrigin();
+    const originResult = contributionOrigin(request.headers.get("origin"));
     if (originResult.isErr()) return new Response("Unavailable", { status: 503 });
     const origin = originResult.value;
     const stripe = contributionClient();

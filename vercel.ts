@@ -3,7 +3,7 @@ import type { VercelConfig } from "@vercel/config/v1";
 export const config = {
   bunVersion: "1.4.x",
   framework: null,
-  installCommand: "bun install --frozen-lockfile",
+  installCommand: "npx --yes bun@1.4.0 install --frozen-lockfile",
   buildCommand: "bun run build",
   outputDirectory: "public",
   cleanUrls: false,

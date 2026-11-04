@@ -94,6 +94,36 @@ describe("contribution amount and identity boundaries", () => {
     expect(response.isOk()).toBe(true);
     if (response.isOk()) expect(response.value.status).toBe(403);
   });
+
+  test("accepts the server-configured Vercel branch alias and keeps redirects on that origin", async () => {
+    const previousOrigin = process.env.APP_ORIGIN;
+    const previousBranch = process.env.VERCEL_BRANCH_URL;
+    process.env.APP_ORIGIN = "https://canonical-preview.vercel.app";
+    process.env.VERCEL_BRANCH_URL = "branch-preview.vercel.app";
+    const response = await Result.tryPromise(() =>
+      contributions.fetch(
+        new Request("https://branch-preview.vercel.app/api/contributions", {
+          method: "POST",
+          headers: {
+            Origin: "https://branch-preview.vercel.app",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "",
+        }),
+      ),
+    );
+    expect(response.isOk()).toBe(true);
+    if (response.isOk()) {
+      expect(response.value.status).toBe(303);
+      expect(response.value.headers.get("location")).toStartWith(
+        "https://branch-preview.vercel.app/contribute.html?",
+      );
+    }
+    if (previousOrigin) process.env.APP_ORIGIN = previousOrigin;
+    else delete process.env.APP_ORIGIN;
+    if (previousBranch) process.env.VERCEL_BRANCH_URL = previousBranch;
+    else delete process.env.VERCEL_BRANCH_URL;
+  });
 });
 
 test("production stays disabled with sandbox credentials or a missing webhook signing secret", async () => {

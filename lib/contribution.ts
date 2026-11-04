@@ -8,7 +8,7 @@ import { quoteContribution } from "../public/contribution-amounts.js";
 import type { contributionSchema } from "./contribution.schema.ts";
 
 /** Use configured deployment origins rather than a client-supplied redirect URL. */
-export function contributionOrigin() {
+export function contributionOrigin(requestOrigin?: string | null) {
   const configured =
     process.env.APP_ORIGIN ||
     (process.env.VERCEL_ENV === "production"
@@ -16,7 +16,13 @@ export function contributionOrigin() {
       : process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
         : "http://127.0.0.1:3000");
-  return Result.try(() => new URL(configured).origin);
+  return Result.try(() => {
+    const origin = new URL(configured).origin;
+    const branchOrigin = process.env.VERCEL_BRANCH_URL
+      ? new URL(`https://${process.env.VERCEL_BRANCH_URL}`).origin
+      : origin;
+    return requestOrigin === branchOrigin ? branchOrigin : origin;
+  });
 }
 
 /** Keep the managed server key and any manually scoped replacement on the server. */
